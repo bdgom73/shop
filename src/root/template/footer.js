@@ -5,10 +5,11 @@ function Footer(props) {
         <>
         <footer>
             <div className="footer">
-                <div className="footer-logo">
-                    <span>Chat 🐳</span>
+                <div className="footer-logo text-center">
+                    <span>coinShop 🐳</span>
+                    <span >&copy; KIJ</span>
                 </div>   
-                <span>&copy; KIJ</span>
+              
             </div>
         </footer>  
         </>

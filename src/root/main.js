@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Router, Switch } from 'react-router-dom';
 import Content from "./template/content"
 import Login from "./page/login"
@@ -7,19 +7,23 @@ import Home from './page/home';
 import Product from './page/product';
 import { useCookies } from 'react-cookie';
 
+
+
 function Main(props){
     const [cookie, setCookie] = useCookies();
-    console.log(cookie)
+    useEffect(()=>{
+        setCookie('uid','a')
+    },[])
     return(
         <>
         {
             cookie.uid  ? (
                 <div className="app">
                 <Switch>
-                    <Route exact path="/" render={({...props})=>{return <Content {...props} component={<Home/>} />}} />
-                    <Route exact path="/login" render={({...props})=>{return <Content {...props} component={<Login/>}/>}} />
-                    <Route exact path="/join" render={({...props})=>{return <Content {...props} component={<Join/>}/>}} />
-                    <Route exact path="/product/post" render={({...props})=>{return <Content {...props} component={<Product/>}/>}} />
+                    <Route exact path="/" render={({...props})=>{return <Content {...props} component={<Home {...props}/>} />}} />
+                    <Route exact path="/login" render={({...props})=>{return <Content {...props} component={<Login {...props}/>}/>}} />
+                    <Route exact path="/join" render={({...props})=>{return <Content {...props} component={<Join {...props}/>}/>}} />
+                    <Route exact path="/product/post" render={({...props})=>{return <Content {...props} component={<Product {...props}/>}/>}} />
                 </Switch>       
             </div>
             ) : (
